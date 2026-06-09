@@ -1,0 +1,36 @@
+# Crustdata API
+
+> Crustdata provides the real-time data layer behind sales, recruiting, and research workflows. Its REST API lets you search indexed datasets of companies, people, and jobs, enrich known entities with fresh attributes, resolve identifiers to a Crustdata ID, search the web, and fetch page content. All endpoints are POST, use application/json, and require `Authorization: Bearer <API_KEY>` and `x-api-version: 2025-11-01`. Base URL: https://api.crustdata.com.
+
+## Specification
+
+- [OpenAPI 3.1 specification](https://raw.githubusercontent.com/Nithish-tish/openAPI-specifications/main/crustdata-specs.json): Complete machine-readable spec for all endpoints, requests, and responses.
+- [README with cURL examples](https://raw.githubusercontent.com/Nithish-tish/openAPI-specifications/main/README.md): Authentication, quickstart, and a runnable example per endpoint.
+
+## Company APIs
+
+- [Search Companies](https://docs.crustdata.com/company-docs/search/introduction): POST /company/search — filter the indexed company dataset.
+- [Enrich Companies](https://docs.crustdata.com/company-docs/enrichment/introduction): POST /company/enrich — full company data by name, domain, ID, or profile URL.
+- [Identify Companies](https://docs.crustdata.com/company-docs/identify/introduction): POST /company/identify — resolve an input to a Crustdata company.
+- [Company Autocomplete](https://docs.crustdata.com/company-docs/autocomplete/introduction): POST /company/search/autocomplete — suggested values for a company field.
+
+## Person APIs
+
+- [Search People](https://docs.crustdata.com/person-docs/search/introduction): POST /person/search — filter the indexed people dataset.
+- [Enrich People](https://docs.crustdata.com/person-docs/enrichment/introduction): POST /person/enrich — enriched profiles by profile URL or business email.
+- [Person Autocomplete](https://docs.crustdata.com/person-docs/autocomplete/introduction): POST /person/search/autocomplete — suggested values for a person field.
+
+## Job APIs
+
+- [Search Jobs](https://docs.crustdata.com/job-docs/search/introduction): POST /job/search — filter, sort, and aggregate the indexed job dataset.
+
+## Web APIs
+
+- [Web Search](https://docs.crustdata.com/web-docs/search/introduction): POST /web/search/live — live search across web, news, scholar, AI, and social sources.
+- [Web Fetch](https://docs.crustdata.com/web-docs/fetch/introduction): POST /web/enrich/live — fetch full page content for a list of URLs.
+
+## Optional
+
+- [Crustdata documentation](https://docs.crustdata.com): Full guides, filters, pagination, recipes, and reference.
+- [Pricing](https://docs.crustdata.com/general/pricing): Credit costs per endpoint.
+- [Rate limits](https://docs.crustdata.com/general/rate-limits): Per-endpoint request limits.
