@@ -1,77 +1,60 @@
-# Crustdata OpenAPI Specification
+# Crustdata API Specifications
 
-The official [OpenAPI 3.1](https://spec.openapis.org/oas/v3.1.0) specification for the
-[Crustdata](https://crustdata.com) REST API.
+This repository contains the specification file for [Crustdata APIs](https://docs.crustdata.com).
 
-Crustdata provides the real-time data layer behind sales, recruiting, and research
-workflows: search indexed datasets of companies, people, and jobs, enrich known
-entities with fresh attributes, resolve identifiers, search the web, and fetch page
-content over a single versioned REST surface.
+In order to use the APIs, you need to have an API key. You can get an API key by signing up on the [Crustdata website](https://crustdata.com).
 
-The machine-readable spec lives in [`openapi.yaml`](./openapi.yaml). It is generated
-from the public documentation at [docs.crustdata.com](https://docs.crustdata.com) and
-published for use with Swagger UI, Postman, and OpenAPI client/code generators.
+The specification lives in [`crustdata-specs.json`](./crustdata-specs.json) and follows the [OpenAPI 3.1](https://spec.openapis.org/oas/v3.1.0) standard. To try the APIs in [Postman](https://www.postman.com/), open Postman, choose **Import**, and select `crustdata-specs.json` to generate a ready-to-use collection.
 
-## Authentication
+## API Endpoints
 
-Get an API key from your Crustdata account, then send these headers with every request:
+### Company
 
-```
-Authorization: Bearer <YOUR_API_KEY>
-x-api-version: 2025-11-01
-```
+[Search Companies](https://docs.crustdata.com/company-docs/search/introduction)
 
-All endpoints are `POST` and use `application/json`. The base URL is
-`https://api.crustdata.com`.
+The Company Search API gives you access to Crustdata's full company dataset, which you can filter and segment using a search query over indexed fields.
 
-## Endpoints
+[Enrich Companies](https://docs.crustdata.com/company-docs/enrichment/introduction)
 
-| API | Method | Path | Description |
-| --- | --- | --- | --- |
-| **Company** | POST | `/company/search` | Search the indexed company dataset by filters. |
-| | POST | `/company/enrich` | Return full company data for known companies. |
-| | POST | `/company/identify` | Resolve a name, domain, ID, or profile URL to a company. |
-| | POST | `/company/search/autocomplete` | Suggest values for a company search field. |
-| **Person** | POST | `/person/search` | Search the indexed people dataset by filters. |
-| | POST | `/person/enrich` | Return enriched profiles for known people. |
-| | POST | `/person/search/autocomplete` | Suggest values for a person search field. |
-| **Job** | POST | `/job/search` | Search the indexed job dataset with filters and aggregations. |
-| **Web** | POST | `/web/search/live` | Live search across web, news, scholar, AI, and social sources. |
-| | POST | `/web/enrich/live` | Fetch full page content for up to 10 URLs. |
+The Company Enrichment API lets you enrich data on a company by performing a one-to-one match against the company profiles hosted in our dataset, returning firmographics, headcount, funding, web traffic, and more.
 
-## Using the spec
+[Identify Companies](https://docs.crustdata.com/company-docs/identify/introduction)
 
-### View it
+The Company Identify API resolves a name, domain, Crustdata ID, or profile URL to a single company, scoring and sorting matches by confidence.
 
-Paste `openapi.yaml` into the [Swagger Editor](https://editor.swagger.io/) to browse
-every endpoint, schema, and example interactively.
+[Company Autocomplete](https://docs.crustdata.com/company-docs/autocomplete/introduction)
 
-### Import into Postman
+The Company Autocomplete API returns suggested values for a company search field, for example industries starting with "tech".
 
-Postman → **Import** → drop in `openapi.yaml`. Postman builds a ready-to-use
-collection. Add your API key and `x-api-version` header, then send requests.
+### Person
 
-### Generate a client
+[Search People](https://docs.crustdata.com/person-docs/search/introduction)
 
-Generate an SDK in your language of choice with
-[openapi-generator](https://openapi-generator.tech/):
+The Person Search API gives you access to Crustdata's full people dataset, which you can filter and segment using a search query over attributes such as title, seniority, company, location, and education.
 
-```bash
-openapi-generator-cli generate -i openapi.yaml -g python -o ./crustdata-python-client
-```
+[Enrich People](https://docs.crustdata.com/person-docs/enrichment/introduction)
 
-### Validate it
+The Person Enrichment API lets you enrich data on a person by performing a one-to-one match using a profile URL or business email, returning profile, experience, education, and contact details.
 
-```bash
-pip install openapi-spec-validator
-python -c "from openapi_spec_validator import validate; import yaml; validate(yaml.safe_load(open('openapi.yaml')))"
-```
+[Person Autocomplete](https://docs.crustdata.com/person-docs/autocomplete/introduction)
 
-## Documentation
+The Person Autocomplete API returns suggested values for a person search field, for example job titles starting with "VP".
 
-- API docs: [docs.crustdata.com](https://docs.crustdata.com)
-- Pricing and rate limits: [docs.crustdata.com/general/pricing](https://docs.crustdata.com/general/pricing)
-- Contact: [gtm@crustdata.co](mailto:gtm@crustdata.co)
+### Job
+
+[Search Jobs](https://docs.crustdata.com/job-docs/search/introduction)
+
+The Job Search API gives you access to Crustdata's indexed job dataset, which you can filter, sort, and aggregate by company, category, location, and posting date.
+
+### Web
+
+[Web Search](https://docs.crustdata.com/web-docs/search/introduction)
+
+The Web Search API runs a live search across web, news, scholar, AI, and social sources, with optional location and date filtering.
+
+[Web Fetch](https://docs.crustdata.com/web-docs/fetch/introduction)
+
+The Web Fetch API retrieves the full page content for a list of URLs.
 
 ## License
 
