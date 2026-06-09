@@ -127,7 +127,10 @@ curl https://api.crustdata.com/person/enrich \
   -H "Authorization: Bearer YOUR_API_KEY" \
   -H "x-api-version: 2025-11-01" \
   -H "Content-Type: application/json" \
-  -d '{ "business_emails": ["abhilash@crustdata.com"] }'
+  -d '{
+    "professional_network_profile_urls": ["https://www.linkedin.com/in/abhilashchowdhary"],
+    "fields": ["basic_profile", "experience"]
+  }'
 ```
 
 [Person Autocomplete](https://docs.crustdata.com/person-docs/autocomplete/introduction) — `POST /person/search/autocomplete`
